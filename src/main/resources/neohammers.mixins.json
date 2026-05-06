@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.github.command17.neohammers.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "client.LevelRendererAccessor"
+  ],
+  "mixins": [
+    "EnchantmentHelperMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

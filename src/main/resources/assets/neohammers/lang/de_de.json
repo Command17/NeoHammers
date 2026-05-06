@@ -1,0 +1,15 @@
+{
+  "item.neohammers.wooden_hammer": "Holzhammer",
+  "item.neohammers.stone_hammer": "Steinhammer",
+  "item.neohammers.iron_hammer": "Eisenhammer",
+  "item.neohammers.golden_hammer": "Goldhammer",
+  "item.neohammers.diamond_hammer": "Diamanthammer",
+  "item.neohammers.netherite_hammer": "Netherithammer",
+
+  "enchantment.neohammers.hammering": "Hämmern",
+  "enchantment.neohammers.hammering.desc": "Vergrößert das Gebiet, was ein Spieler auf einmal abbauen kann.",
+
+  "tag.item.neohammers.hammers": "Hämmer",
+
+  "config.neohammers.disableHammeringEnchantingTableRestriction": "Beschränkung für Hämmern am Zaubertisch deaktivieren"
+}

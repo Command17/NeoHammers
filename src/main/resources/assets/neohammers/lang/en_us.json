@@ -1,0 +1,15 @@
+{
+  "item.neohammers.wooden_hammer": "Wooden Hammer",
+  "item.neohammers.stone_hammer": "Stone Hammer",
+  "item.neohammers.iron_hammer": "Iron Hammer",
+  "item.neohammers.golden_hammer": "Golden Hammer",
+  "item.neohammers.diamond_hammer": "Diamond Hammer",
+  "item.neohammers.netherite_hammer": "Netherite Hammer",
+
+  "enchantment.neohammers.hammering": "Hammering",
+  "enchantment.neohammers.hammering.desc": "Increases the area the user can mine at once.",
+
+  "tag.item.neohammers.hammers": "Hammers",
+
+  "config.neohammers.disableHammeringEnchantingTableRestriction": "Disable Hammering Enchanting Table Restriction"
+}

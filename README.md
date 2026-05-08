@@ -28,9 +28,9 @@ be obtained from ominous vaults.
 
 ![Showcase Hammering III](assets/hammering3.gif)
 
-***Hammering IV***
+***Hammering VI***
 
-![Showcase Hammering IV](assets/hammering6.gif)
+![Showcase Hammering VI](assets/hammering6.gif)
 
 ## FAQ ❓
 

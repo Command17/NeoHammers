@@ -210,14 +210,14 @@ publishMods {
         serverRequired = true
         javaVersions.add(JavaVersion.VERSION_21)
         minecraftVersions.addAll(supportedMcVersions)
-        projectId = ""
+        projectId = "1535592"
     }
 
     modrinth {
         modLoaders.add("neoforge")
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         minecraftVersions.addAll(supportedMcVersions)
-        projectId = ""
+        projectId = "7lhLLKcs"
     }
 
     github {

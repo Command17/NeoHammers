@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
-    @Inject(method = "getAvailableEnchantmentResults", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getAvailableEnchantmentResults", at = @At("RETURN"))
     private static void neohammers$restrictHammeringLevel(int level, ItemStack stack, Stream<Holder<Enchantment>> possibleEnchantments, CallbackInfoReturnable<List<EnchantmentInstance>> cir) {
         if (NeoHammers.CONFIG.disableHammeringEnchantingTableRestriction.get()) {
             return;
@@ -30,7 +30,5 @@ public class EnchantmentHelperMixin {
                 list.set(i, new EnchantmentInstance(enchantment.enchantment, 3));
             }
         }
-
-        cir.setReturnValue(list);
     }
 }

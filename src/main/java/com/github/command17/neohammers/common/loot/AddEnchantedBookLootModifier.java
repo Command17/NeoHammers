@@ -4,21 +4,18 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Holder;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
+import org.jspecify.annotations.NullMarked;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@NullMarked
 public class AddEnchantedBookLootModifier extends LootModifier {
     public static final MapCodec<AddEnchantedBookLootModifier> CODEC = RecordCodecBuilder.mapCodec(
             (instance) -> codecStart(instance).and(instance.group(
@@ -31,8 +28,8 @@ public class AddEnchantedBookLootModifier extends LootModifier {
     private final int minLevel;
     private final int maxLevel;
 
-    public AddEnchantedBookLootModifier(LootItemCondition[] conditionsIn, Holder<Enchantment> enchantment, int minLevel, int maxLevel) {
-        super(conditionsIn);
+    public AddEnchantedBookLootModifier(LootItemCondition[] conditionsIn, int priority, Holder<Enchantment> enchantment, int minLevel, int maxLevel) {
+        super(conditionsIn, priority);
         this.enchantment = enchantment;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
@@ -45,7 +42,7 @@ public class AddEnchantedBookLootModifier extends LootModifier {
         }
 
         int level = context.getRandom().nextIntBetweenInclusive(this.minLevel, this.maxLevel);
-        loot.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(this.enchantment, level)));
+        loot.add(EnchantmentHelper.createBook(new EnchantmentInstance(this.enchantment, level)));
         return loot;
     }
 

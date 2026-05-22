@@ -4,36 +4,32 @@ import com.github.command17.neohammers.common.enchantment.ModEnchantmentEffectCo
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.NullMarked;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.stream.Stream;
 
-@ParametersAreNonnullByDefault
+@NullMarked
 public class HammerItem extends Item {
-    private final Tier tier;
+    private final ToolMaterial material;
 
-    public HammerItem(Tier tier, TagKey<Block> minableBlocks, int durabilityModifier, Properties properties) {
-        super(properties
-                .durability(tier.getUses() * durabilityModifier)
-                .component(DataComponents.TOOL, tier.createToolProperties(minableBlocks))
-        );
-        this.tier = tier;
+    public HammerItem(ToolMaterial material, TagKey<Block> minableBlocks, float attackDamage, float attackSpeed, int durabilityModifier, Properties properties) {
+        super(properties.tool(material, minableBlocks, attackDamage, attackSpeed, 0)
+                .durability(material.durability() * durabilityModifier));
+        this.material = material;
     }
 
     public static Stream<BlockPos> getBlocksInRadius(Player player, int radius, int depth, BlockPos hitBlockPos, LevelAccessor level) {
@@ -62,14 +58,11 @@ public class HammerItem extends Item {
     public static Stream<BlockPos> getBlocksInRadiusBasedOnEnchantment(Player player, BlockPos hitBlockPos, LevelAccessor level) {
         ItemStack stack = player.getMainHandItem();
         Pair<?, Integer> highestLevel = EnchantmentHelper.getHighestLevel(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get());
-        if (highestLevel != null) {
-            int radius = highestLevel.getSecond() / 4 + 1;
-            int depth = highestLevel.getSecond() % 3 - 1;
-            if (depth < 0) depth = 2;
-            return getBlocksInRadius(player, radius, depth, hitBlockPos, level);
-        }
+        int radius = highestLevel.getSecond() / 4 + 1;
+        int depth = highestLevel.getSecond() % 3 - 1;
+        if (depth < 0) depth = 2;
+        return getBlocksInRadius(player, radius, depth, hitBlockPos, level);
 
-        return Stream.of();
     }
 
     public static boolean canMineOther(ItemStack stack, BlockState state, BlockState otherState) {
@@ -80,18 +73,7 @@ public class HammerItem extends Item {
         return !player.getAbilities().instabuild && !player.isShiftKeyDown();
     }
 
-    public Tier getTier() {
-        return this.tier;
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public int getEnchantmentValue() {
-        return this.tier.getEnchantmentValue();
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return this.tier.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
+    public ToolMaterial getMaterial() {
+        return this.material;
     }
 }

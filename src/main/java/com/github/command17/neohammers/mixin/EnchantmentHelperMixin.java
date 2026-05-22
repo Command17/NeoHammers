@@ -26,8 +26,8 @@ public class EnchantmentHelperMixin {
         List<EnchantmentInstance> list = cir.getReturnValue();
         for (int i = 0; i < list.size(); i++) {
             EnchantmentInstance enchantment = list.get(i);
-            if (enchantment.enchantment.is(ModEnchantments.HAMMERING) && enchantment.level > 3) {
-                list.set(i, new EnchantmentInstance(enchantment.enchantment, 3));
+            if (enchantment.enchantment().is(ModEnchantments.HAMMERING) && enchantment.level() > 3) {
+                list.set(i, new EnchantmentInstance(enchantment.enchantment(), 3));
             }
         }
     }

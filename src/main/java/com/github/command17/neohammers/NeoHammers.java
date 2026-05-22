@@ -4,7 +4,7 @@ import com.github.command17.neohammers.common.enchantment.ModEnchantmentEffectCo
 import com.github.command17.neohammers.common.item.ModItems;
 import com.github.command17.neohammers.common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -33,8 +33,8 @@ public final class NeoHammers {
         LOGGER.info("Initialized.");
     }
 
-    public static ResourceLocation resource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier resource(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
     @SubscribeEvent

@@ -7,7 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -31,9 +31,10 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 "add_hammering_to_ominous_vault_loot",
                 new AddEnchantedBookLootModifier(
                         new LootItemCondition[] {
-                                new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/trial_chambers/reward_ominous")).build(),
+                                new LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/trial_chambers/reward_ominous")).build(),
                                 LootItemRandomChanceCondition.randomChance(0.2f).build()
                         },
+                        0,
                         hammeringEnchantment,
                         3, 6
                 )

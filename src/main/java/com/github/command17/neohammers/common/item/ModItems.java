@@ -12,6 +12,7 @@ public final class ModItems {
 
     public static final DeferredItem<HammerItem> WOODEN_HAMMER = createHammer("wooden_hammer", ToolMaterial.WOOD, 5, -3.1f, of());
     public static final DeferredItem<HammerItem> STONE_HAMMER = createHammer("stone_hammer", ToolMaterial.STONE, 6, -3.1f, of());
+    public static final DeferredItem<HammerItem> COPPER_HAMMER = createHammer("copper_hammer", ToolMaterial.COPPER, 7, -3.2f, of());
     public static final DeferredItem<HammerItem> IRON_HAMMER = createHammer("iron_hammer", ToolMaterial.IRON, 5, -3.1f, of());
     public static final DeferredItem<HammerItem> GOLDEN_HAMMER = createHammer("golden_hammer", ToolMaterial.GOLD, 5, -3.1f, of());
     public static final DeferredItem<HammerItem> DIAMOND_HAMMER = createHammer("diamond_hammer", ToolMaterial.DIAMOND, 4, -3.1f, of());

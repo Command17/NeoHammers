@@ -30,18 +30,28 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void buildRecipes() {
         createHammer(ItemTags.PLANKS, ModItems.WOODEN_HAMMER);
         createHammer(Tags.Items.COBBLESTONES, ModItems.STONE_HAMMER);
+        createMetalHammer(Tags.Items.STORAGE_BLOCKS_COPPER, ModItems.COPPER_HAMMER, Items.COPPER_INGOT);
         createMetalHammer(Items.IRON_BLOCK, ModItems.IRON_HAMMER, Items.IRON_INGOT);
         createMetalHammer(Items.GOLD_BLOCK, ModItems.GOLDEN_HAMMER, Items.GOLD_INGOT);
         createHammer(Items.DIAMOND_BLOCK, ModItems.DIAMOND_HAMMER);
         modNetheriteSmithing(ModItems.DIAMOND_HAMMER.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_HAMMER.get());
     }
 
-    private void createMetalHammer(ItemLike material, ItemLike result, ItemLike smeltedResult) {
-        createHammer(material, result);
+    private void createMetalHammerSmeltDown(ItemLike result, ItemLike smeltedResult) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(result), RecipeCategory.TOOLS, CookingBookCategory.MISC, smeltedResult, 0.8f, 13 * 20).unlockedBy(getHasName(result), has(result))
                 .save(output, NeoHammers.resource("smelt_" + getItemName(result) + "_back_to_resource").toString());
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(result), RecipeCategory.TOOLS, CookingBookCategory.MISC, smeltedResult, 0.8f, 13 * 20).unlockedBy(getHasName(result), has(result))
                 .save(output, NeoHammers.resource("blast_" + getItemName(result) + "_back_to_resource").toString());
+    }
+
+    private void createMetalHammer(ItemLike material, ItemLike result, ItemLike smeltedResult) {
+        createHammer(material, result);
+        createMetalHammerSmeltDown(result, smeltedResult);
+    }
+
+    private void createMetalHammer(TagKey<Item> material, ItemLike result, ItemLike smeltedResult) {
+        createHammer(material, result);
+        createMetalHammerSmeltDown(result, smeltedResult);
     }
 
     private void createHammer(ItemLike material, ItemLike result) {

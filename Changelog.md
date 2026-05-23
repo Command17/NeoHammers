@@ -1,1 +1,1 @@
-Initial release
+- Add stone hammer to hammers tag

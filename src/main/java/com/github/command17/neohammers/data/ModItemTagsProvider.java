@@ -25,6 +25,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(ModTags.ItemTags.HAMMERS)
                 .add(ModItems.WOODEN_HAMMER.get())
+                .add(ModItems.STONE_HAMMER.get())
                 .add(ModItems.IRON_HAMMER.get())
                 .add(ModItems.GOLDEN_HAMMER.get())
                 .add(ModItems.DIAMOND_HAMMER.get())

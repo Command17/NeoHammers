@@ -24,11 +24,11 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput output) {
-        createHammer(output, ItemTags.PLANKS, ModItems.WOODEN_HAMMER);
-        createHammer(output, Tags.Items.COBBLESTONES, ModItems.STONE_HAMMER);
-        createMetalHammer(output, Items.IRON_BLOCK, ModItems.IRON_HAMMER, Items.IRON_INGOT);
-        createMetalHammer(output, Items.GOLD_BLOCK, ModItems.GOLDEN_HAMMER, Items.GOLD_INGOT);
-        createHammer(output, Items.DIAMOND_BLOCK, ModItems.DIAMOND_HAMMER);
+        createHammer(output, ItemTags.PLANKS, ModItems.WOODEN_HAMMER.get());
+        createHammer(output, Tags.Items.COBBLESTONES, ModItems.STONE_HAMMER.get());
+        createMetalHammer(output, Items.IRON_BLOCK, ModItems.IRON_HAMMER.get(), Items.IRON_INGOT);
+        createMetalHammer(output, Items.GOLD_BLOCK, ModItems.GOLDEN_HAMMER.get(), Items.GOLD_INGOT);
+        createHammer(output, Items.DIAMOND_BLOCK, ModItems.DIAMOND_HAMMER.get());
         modNetheriteSmithing(output, ModItems.DIAMOND_HAMMER.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_HAMMER.get());
     }
 

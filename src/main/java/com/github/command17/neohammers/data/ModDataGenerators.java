@@ -15,11 +15,9 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = NeoHammers.MOD_ID)
@@ -36,7 +34,7 @@ public final class ModDataGenerators {
                         Enchantment.dynamicCost(51, 10), // Max Cost
                         2, // Anvil Cost
                         EquipmentSlotGroup.MAINHAND // Equipment Slots
-                )).withEffect(ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get())
+                )).withEffect(ModEnchantmentEffectComponents.EXTENDED_AREA_MINE.get())
                         .build(ModEnchantments.HAMMERING.location()));
             });
 

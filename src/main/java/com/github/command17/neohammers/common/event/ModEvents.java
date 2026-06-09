@@ -38,7 +38,7 @@ public final class ModEvents {
         BlockState hitState = event.getState();
         LevelAccessor level = event.getLevel();
         ItemStack stack = player.getMainHandItem();
-        if (EnchantmentHelper.has(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get()) && HammerItem.canPlayerUseExtendedAreaMine(player)) {
+        if (EnchantmentHelper.has(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINE.get()) && HammerItem.canPlayerUseExtendedAreaMine(player)) {
             Stream<BlockPos> blocks = HammerItem.getBlocksInRadiusBasedOnEnchantment(player, hitPos, level);
             blocks.forEach((pos) -> {
                 if (pos.equals(hitPos)) {

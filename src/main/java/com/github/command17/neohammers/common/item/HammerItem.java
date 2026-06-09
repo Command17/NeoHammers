@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -61,7 +60,7 @@ public class HammerItem extends Item {
 
     public static Stream<BlockPos> getBlocksInRadiusBasedOnEnchantment(Player player, BlockPos hitBlockPos, LevelAccessor level) {
         ItemStack stack = player.getMainHandItem();
-        Pair<?, Integer> highestLevel = EnchantmentHelper.getHighestLevel(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get());
+        Pair<?, Integer> highestLevel = EnchantmentHelper.getHighestLevel(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINE.get());
         if (highestLevel != null) {
             int radius = highestLevel.getSecond() / 4 + 1;
             int depth = highestLevel.getSecond() % 3 - 1;

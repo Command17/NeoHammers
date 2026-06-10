@@ -9,6 +9,15 @@
   "enchantment.neohammers.hammering": "Hämmern",
   "enchantment.neohammers.hammering.desc": "Vergrößert das Gebiet, was ein Spieler auf einmal abbauen kann.",
 
+  "advancement.neohammers.hammerTime.title": "Hammerzeit",
+  "advancement.neohammers.hammerTime.desc": "Stelle einen Hammer her",
+
+  "advancement.neohammers.seriousDestructionNeeds.title": "Starker Zerstörungbedarf",
+  "advancement.neohammers.seriousDestructionNeeds.desc": "Verbesse deinen Hammer zu einen Netherithammer mit einem Netheritbarren",
+
+  "advancement.neohammers.seriousDestruction.title": "Starke Zerstörung",
+  "advancement.neohammers.seriousDestruction.desc": "Zerstöre einen großen Bereich mit Hämmern VI",
+
   "tag.item.neohammers.hammers": "Hämmer",
 
   "config.neohammers.disableHammeringEnchantingTableRestriction": "Beschränkung für Hämmern am Zaubertisch deaktivieren"

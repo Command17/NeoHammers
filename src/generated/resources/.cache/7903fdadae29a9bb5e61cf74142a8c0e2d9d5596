@@ -1,4 +1,4 @@
-// 26.1.2	2026-05-23T11:06:18.7741184	Tags for minecraft:item mod id neohammers
+// 1.21.1	2026-05-23T11:24:30.2490743	Tags for minecraft:item mod id neohammers
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/c/tags/item/tools/mining_tool.json
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/axes.json
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/enchantable/durability.json
@@ -8,4 +8,4 @@ f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/enchantable/va
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/hoes.json
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/pickaxes.json
 f93e4b6dcf0e863e25c2a995cdf7323b3bfc0c7d data/minecraft/tags/item/shovels.json
-fdf291fda1aa209128ac45e6d1809a0d47b6377f data/neohammers/tags/item/hammers.json
+316f68fd59c2dfeaccfe067a2345e2ff4fd8cd14 data/neohammers/tags/item/hammers.json

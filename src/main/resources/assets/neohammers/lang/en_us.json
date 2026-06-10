@@ -10,6 +10,15 @@
   "enchantment.neohammers.hammering": "Hammering",
   "enchantment.neohammers.hammering.desc": "Increases the area the user can mine at once.",
 
+  "advancement.neohammers.hammerTime.title": "Hammer Time",
+  "advancement.neohammers.hammerTime.desc": "Craft a Hammer",
+
+  "advancement.neohammers.seriousDestructionNeeds.title": "Serious Destruction Needs",
+  "advancement.neohammers.seriousDestructionNeeds.desc": "Upgrade your Hammer to a Nethertie Hammer using a Netherite Ingot",
+
+  "advancement.neohammers.seriousDestruction.title": "Serious Destruction",
+  "advancement.neohammers.seriousDestruction.desc": "Destroy a large Area using Hammering VI",
+
   "tag.item.neohammers.hammers": "Hammers",
 
   "config.neohammers.disableHammeringEnchantingTableRestriction": "Disable Hammering Enchanting Table Restriction"

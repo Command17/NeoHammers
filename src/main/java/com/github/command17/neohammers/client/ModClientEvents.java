@@ -73,7 +73,7 @@ public final class ModClientEvents {
             ItemStack stack = player.getMainHandItem();
             BlockPos hitPos = hitResult.getBlockPos();
             BlockState hitState = level.getBlockState(hitPos);
-            if (!EnchantmentHelper.has(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get())) {
+            if (!EnchantmentHelper.has(stack, ModEnchantmentEffectComponents.EXTENDED_AREA_MINE.get())) {
                 return;
             }
 

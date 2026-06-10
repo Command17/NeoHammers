@@ -73,12 +73,12 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             NeoHammers.translate("advancement.", ".seriousDestruction.title"),
                             NeoHammers.translate("advancement.", ".seriousDestruction.desc"),
                             null,
-                            AdvancementType.GOAL,
+                            AdvancementType.CHALLENGE,
                             true,
                             true,
                             false
                     )
-                    .parent(seriousDestructionNeeds)
+                    .parent(hammerTime)
                     .rewards(AdvancementRewards.Builder.experience(95))
                     .addCriterion(
                             "destroy_everything",

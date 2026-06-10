@@ -4,32 +4,33 @@ import com.github.command17.neohammers.NeoHammers;
 import com.github.command17.neohammers.common.advancement.UseExtendedAreaMineTrigger;
 import com.github.command17.neohammers.common.item.ModItems;
 import com.github.command17.neohammers.common.util.ModTags;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.*;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.ItemPredicate;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.neoforged.neoforge.common.data.AdvancementProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jspecify.annotations.NullMarked;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends AdvancementProvider {
-    public ModAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
-        super(output, registries, existingFileHelper, List.of(new ModAdvancementGenerator()));
+    public ModAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, List.of(new ModAdvancementGenerator()));
     }
 
-    @ParametersAreNonnullByDefault
-    @MethodsReturnNonnullByDefault
-    private static class ModAdvancementGenerator implements AdvancementGenerator {
+    @NullMarked
+    private static class ModAdvancementGenerator implements AdvancementSubProvider {
         @Override
-        public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
+        public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver) {
+            HolderGetter<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
             AdvancementHolder hammerTime = Advancement.Builder.advancement()
                     .display(
                             ModItems.IRON_HAMMER.get(),
@@ -44,9 +45,9 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .parent(AdvancementSubProvider.createPlaceholder("minecraft:adventure/root"))
                     .addCriterion(
                             "has_any_hammer",
-                            InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ModTags.ItemTags.HAMMERS))
+                            InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(itemLookup, ModTags.ItemTags.HAMMERS))
                     )
-                    .save(saver, NeoHammers.resource("adventure/hammer_time"), existingFileHelper);
+                    .save(saver, NeoHammers.resource("adventure/hammer_time"));
 
             AdvancementHolder seriousDestructionNeeds = Advancement.Builder.advancement()
                     .display(
@@ -65,7 +66,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             "has_netherite_hammer",
                             InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.NETHERITE_HAMMER.get())
                     )
-                    .save(saver, NeoHammers.resource("adventure/serious_destruction_needs"), existingFileHelper);
+                    .save(saver, NeoHammers.resource("adventure/serious_destruction_needs"));
 
             AdvancementHolder seriousDestruction = Advancement.Builder.advancement()
                     .display(
@@ -84,7 +85,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                             "destroy_everything",
                             UseExtendedAreaMineTrigger.TriggerInstance.instance(6)
                     )
-                    .save(saver, NeoHammers.resource("adventure/serious_destruction"), existingFileHelper);
+                    .save(saver, NeoHammers.resource("adventure/serious_destruction"));
         }
     }
 }

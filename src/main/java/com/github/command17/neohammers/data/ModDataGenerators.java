@@ -38,7 +38,7 @@ public final class ModDataGenerators {
                                 2, // Anvil Cost
                                 EquipmentSlotGroup.MAINHAND // Equipment Slots
                         )
-                ).withEffect(ModEnchantmentEffectComponents.EXTENDED_AREA_MINING.get())
+                ).withEffect(ModEnchantmentEffectComponents.EXTENDED_AREA_MINE.get())
                         .build(ModEnchantments.HAMMERING.identifier()));
             }).add(Registries.VILLAGER_TRADE, (context) -> {
                 var enchantment = context.lookup(Registries.ENCHANTMENT).get(ModEnchantments.HAMMERING).orElseThrow();
@@ -66,5 +66,6 @@ public final class ModDataGenerators {
         event.createProvider(ModItemTagsProvider::new);
         event.createProvider(ModGlobalLootModifierProvider::new);
         event.createProvider(ModRecipeProvider.Runner::new);
+        event.createProvider(ModAdvancementProvider::new);
     }
 }

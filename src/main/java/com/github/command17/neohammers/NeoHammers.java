@@ -1,9 +1,11 @@
 package com.github.command17.neohammers;
 
+import com.github.command17.neohammers.common.advancement.ModCriterionTriggers;
 import com.github.command17.neohammers.common.enchantment.ModEnchantmentEffectComponents;
 import com.github.command17.neohammers.common.item.ModItems;
 import com.github.command17.neohammers.common.loot.ModLootModifiers;
 import com.mojang.logging.LogUtils;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -29,12 +31,17 @@ public final class NeoHammers {
         ModItems.register(eventBus);
         ModEnchantmentEffectComponents.register(eventBus);
         ModLootModifiers.register(eventBus);
+        ModCriterionTriggers.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, CONFIG_SPEC);
         LOGGER.info("Initialized.");
     }
 
     public static Identifier resource(String path) {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static Component translate(String prefix, String suffix) {
+        return Component.translatable(prefix + MOD_ID + suffix);
     }
 
     @SubscribeEvent

@@ -1,1 +1,1 @@
-- Add stone hammer to hammers tag
+- Add advancements

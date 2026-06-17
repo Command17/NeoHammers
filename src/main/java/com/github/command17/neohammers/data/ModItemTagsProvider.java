@@ -21,13 +21,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(ModTags.ItemTags.HAMMERS)
-                .add(ModItems.WOODEN_HAMMER.get())
-                .add(ModItems.STONE_HAMMER.get())
-                .add(ModItems.COPPER_HAMMER.get())
-                .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLDEN_HAMMER.get())
-                .add(ModItems.DIAMOND_HAMMER.get())
-                .add(ModItems.NETHERITE_HAMMER.get());
+                .add(ModItems.WOODEN_HAMMER.getKey())
+                .add(ModItems.STONE_HAMMER.getKey())
+                .add(ModItems.COPPER_HAMMER.getKey())
+                .add(ModItems.IRON_HAMMER.getKey())
+                .add(ModItems.GOLDEN_HAMMER.getKey())
+                .add(ModItems.DIAMOND_HAMMER.getKey())
+                .add(ModItems.NETHERITE_HAMMER.getKey());
 
         tag(Tags.Items.MINING_TOOL_TOOLS)
                 .addTag(ModTags.ItemTags.HAMMERS);

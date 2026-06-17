@@ -9,6 +9,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.SubmitNodeStorage;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.BlockBreakingRenderState;
@@ -46,18 +48,19 @@ public final class ModClientEvents {
         List<BlockOutlineRenderState> outlineRenderStates = levelRenderState.getRenderDataOrDefault(extraBlockOutlineRenderStates, new ArrayList<>());
         Vec3 camPos = levelRenderState.cameraRenderState.pos;
         PoseStack poseStack = event.getPoseStack();
-        VertexConsumer buffer = ((LevelRendererAccessor) levelRenderer).getRenderBuffers().bufferSource().getBuffer(RenderTypes.secondaryBlockOutline());
+        SubmitNodeStorage submitNodeStorage = ((LevelRendererAccessor) levelRenderer).getSubmitNodeStorage();
         for (var renderState: outlineRenderStates) {
+            BlockPos pos = renderState.pos();
             poseStack.pushPose();
+            poseStack.translate(pos.getX() - camPos.x(), pos.getY() - camPos.y(), pos.getZ() - camPos.z());
             ((LevelRendererAccessor) levelRenderer).renderOutline(
                     poseStack,
-                    buffer,
-                    camPos.x,
-                    camPos.y,
-                    camPos.z,
+                    submitNodeStorage,
+                    RenderTypes.lines(),
                     renderState,
                     renderState.highContrast() ? -11010079 : ARGB.black(102),
-                    Minecraft.getInstance().gameRenderer.getGameRenderState().windowRenderState.appropriateLineWidth
+                    Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.appropriateLineWidth,
+                    renderState.isTranslucent()
             );
 
             poseStack.popPose();

@@ -3,8 +3,12 @@ package com.github.command17.neohammers.data;
 import com.github.command17.neohammers.NeoHammers;
 import com.github.command17.neohammers.common.util.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import org.jspecify.annotations.NullMarked;
@@ -24,6 +28,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(BlockTags.MINEABLE_WITH_HOE)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(Blocks.COBWEB);
+                .add(key(Blocks.COBWEB));
+    }
+
+    private ResourceKey<Block> key(Block block) {
+        return ResourceKey.create(Registries.BLOCK, BuiltInRegistries.BLOCK.getKey(block));
     }
 }

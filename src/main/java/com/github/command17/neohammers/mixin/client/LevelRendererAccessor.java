@@ -1,9 +1,10 @@
 package com.github.command17.neohammers.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.RenderBuffers;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.SubmitNodeStorage;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.state.level.BlockOutlineRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
@@ -11,9 +12,9 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(LevelRenderer.class)
 public interface LevelRendererAccessor {
-    @Invoker("renderHitOutline")
-    void renderOutline(PoseStack poseStack, VertexConsumer builder, double camX, double camY, double camZ, BlockOutlineRenderState state, int color, float width);
+    @Invoker("submitHitOutline")
+    void renderOutline(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, RenderType renderType, BlockOutlineRenderState state, int color, float width, boolean afterTerrain);
 
-    @Accessor("renderBuffers")
-    RenderBuffers getRenderBuffers();
+    @Accessor("submitNodeStorage")
+    SubmitNodeStorage getSubmitNodeStorage();
 }

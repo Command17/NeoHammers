@@ -1,1 +1,1 @@
-- Add advancements
+- Wooden hammers are now furnace fuel

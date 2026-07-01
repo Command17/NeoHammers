@@ -56,5 +56,6 @@ public final class ModDataGenerators {
         generator.addProvider(event.includeServer(), new ModGlobalLootModifierProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new ModAdvancementProvider(output, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModDataMapProvider(output, lookupProvider));
     }
 }

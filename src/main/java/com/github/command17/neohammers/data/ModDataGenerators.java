@@ -67,5 +67,6 @@ public final class ModDataGenerators {
         event.createProvider(ModGlobalLootModifierProvider::new);
         event.createProvider(ModRecipeProvider.Runner::new);
         event.createProvider(ModAdvancementProvider::new);
+        event.createProvider(ModDataMapProvider::new);
     }
 }
